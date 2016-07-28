@@ -31,3 +31,4 @@ djangocms-cascade
 easy_thumbnails
 aldryn_style
 aldryn-bootstrap3
+django-parler

@@ -53,7 +53,7 @@ WSGI_APPLICATION = 'wanga.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
@@ -150,6 +150,7 @@ INSTALLED_APPS = [
     'djangocms_video',
     'reversion',
 
+    #'parler',
 
     'easy_thumbnails',
     'aldryn_style',
@@ -175,6 +176,13 @@ CMS_LANGUAGES = {
     ## Customize this
     1: [
         {
+            'name': gettext('pt-br'),
+            'public': True,
+            'redirect_on_fallback': True,
+            'code': 'pt-br',
+            'hide_untranslated': False,
+        },
+        {
             'name': gettext('en'),
             'public': True,
             'redirect_on_fallback': True,
@@ -188,13 +196,7 @@ CMS_LANGUAGES = {
             'code': 'es',
             'hide_untranslated': False,
         },
-        {
-            'name': gettext('pt-br'),
-            'public': True,
-            'redirect_on_fallback': True,
-            'code': 'pt-br',
-            'hide_untranslated': False,
-        },
+
         {
             'name': gettext('sw'),
             'public': True,
@@ -224,11 +226,35 @@ CMS_LANGUAGES = {
     },
 }
 
+'''
+PARLER_DEFAULT_LANGUAGE = "pt-br"
+
+PARLER_LANGUAGES ={
+    1:(
+        {'code':'pt-br'},
+        {'code':'es'},
+        {'code':'ht'},
+        {'code':'sw'},
+        {'code':'fr'},
+        {'code':'en'}
+
+    ),
+    'default': {
+
+    }
+}
+'''
+
+
 CMS_TEMPLATES = (
     ## Customize this
     ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
+    #('sidebar_left.html', 'Sidebar Left'),
+    #('sidebar_right.html', 'Sidebar Right'),
+    ('index.html', 'Home'),
+    ('index_br.html', 'Home_br'),
+    ('about.html', 'About'),
+    ('contact.html', 'Contact'),
 )
 
 CMS_PERMISSION = True
@@ -257,3 +283,6 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+TEXT_ADDITIONAL_TAGS = ('iframe',)
+TEXT_ADDITIONAL_ATTRIBUTES = ('scrolling', 'allowfullscreen', 'frameborder', 'src', 'height', 'width')
